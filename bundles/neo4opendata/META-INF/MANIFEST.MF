@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: neo4OpenData
+Bundle-SymbolicName: neo4opendata
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: glefur
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: neo4j;bundle-version="1.0.0"
