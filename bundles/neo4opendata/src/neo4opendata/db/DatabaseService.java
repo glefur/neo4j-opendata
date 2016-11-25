@@ -26,4 +26,12 @@ public interface DatabaseService {
 	GraphDatabaseService getDBFacade(String dbPath);
 	
 	void shutDown(GraphDatabaseService db);
+	
+	void performOperation(GraphDatabaseService db, DatabaseOperation operation) throws Exception;
+	
+	public interface DatabaseOperation {
+		
+		void run() throws Exception;
+		
+	}
 }

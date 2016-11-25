@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Neo4 OpenData App
+Bundle-SymbolicName: neo4opendata.app
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: neo4opendata.app.Application
+Bundle-Vendor: glefur
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: neo4opendata.db,
+ org.neo4j.graphdb,
+ org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
