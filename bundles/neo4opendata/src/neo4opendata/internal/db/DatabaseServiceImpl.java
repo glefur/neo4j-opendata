@@ -22,6 +22,9 @@ import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 
 import neo4opendata.db.DatabaseService;
+import neo4opendata.db.operations.DatabaseOperation;
+import neo4opendata.db.operations.ErrorResult;
+import neo4opendata.db.operations.Result;
 
 /**
  * @author <a href="mailto:goulwen.lefur@gmail.com">Goulwen Le Fur</a>.
@@ -52,10 +55,13 @@ public class DatabaseServiceImpl implements DatabaseService {
 	 * @see neo4opendata.db.DatabaseService#performOperation(org.neo4j.graphdb.GraphDatabaseService, neo4opendata.db.DatabaseService.DatabaseOperation)
 	 */
 	@Override
-	public void performOperation(GraphDatabaseService db, DatabaseOperation operation) throws Exception {
+	public Result performOperation(GraphDatabaseService db, DatabaseOperation operation) throws Exception {
 		try (Transaction tx = db.beginTx()) {
-			operation.run();
+			Result result = operation.run(db);
 			tx.success();
+			return result;
+		} catch (Exception e) {
+			return new ErrorResult("An error occurred during the operation.", e);
 		}
 	}
 

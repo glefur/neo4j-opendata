@@ -13,23 +13,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package neo4opendata.db;
+package neo4opendata.db.operations;
 
 import org.neo4j.graphdb.GraphDatabaseService;
-
-import neo4opendata.db.operations.DatabaseOperation;
-import neo4opendata.db.operations.Result;
 
 /**
  * @author <a href="mailto:goulwen.lefur@gmail.com">Goulwen Le Fur</a>.
  *
  */
-public interface DatabaseService {
-
-	GraphDatabaseService getDBFacade(String dbPath);
+public interface DatabaseOperation {
 	
-	void shutDown(GraphDatabaseService db);
-	
-	Result performOperation(GraphDatabaseService db, DatabaseOperation operation) throws Exception;
+	Result run(GraphDatabaseService db) throws Exception;
 	
 }

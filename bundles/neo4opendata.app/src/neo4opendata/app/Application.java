@@ -6,6 +6,10 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
 import neo4opendata.db.DatabaseService;
+import neo4opendata.db.operations.DatabaseOperation;
+import neo4opendata.db.operations.Result;
+import neo4opendata.db.operations.impl.InitializeDB;
+import neo4opendata.db.operations.impl.InitializeDB.InitializationResult;
 
 public class Application implements BundleActivator {
 
@@ -28,6 +32,8 @@ public class Application implements BundleActivator {
 		GraphDatabaseService dbFacade = databaseService.getDBFacade("/home/glefur/Perso/db/test.db");
 		if (dbFacade != null) {
 			System.out.println("Got it! ");
+			DatabaseOperation operation = new InitializeDB();
+			databaseService.performOperation(dbFacade, operation);
 			databaseService.shutDown(dbFacade);
 		} else {
 			System.err.println("Fail.");

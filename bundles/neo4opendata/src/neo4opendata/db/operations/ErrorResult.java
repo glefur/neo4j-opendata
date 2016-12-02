@@ -1,5 +1,5 @@
 /**
- * Neo 4 OpenData example project.
+ * Neo4OpenData sample
  * 
  * Copyright (C) 2016 Goulwen Le Fur
  * 
@@ -13,23 +13,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package neo4opendata.db;
-
-import org.neo4j.graphdb.GraphDatabaseService;
-
-import neo4opendata.db.operations.DatabaseOperation;
-import neo4opendata.db.operations.Result;
+package neo4opendata.db.operations;
 
 /**
  * @author <a href="mailto:goulwen.lefur@gmail.com">Goulwen Le Fur</a>.
  *
  */
-public interface DatabaseService {
+public class ErrorResult implements Result {
+	
+	private String message;
+	private Throwable exception;
 
-	GraphDatabaseService getDBFacade(String dbPath);
+	public ErrorResult(String message) {
+		this.message = message;
+	}
+
+	public ErrorResult(String message, Throwable t) {
+		this(message);
+		this.exception = t;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public Throwable getException() {
+		return exception;
+	}
 	
-	void shutDown(GraphDatabaseService db);
 	
-	Result performOperation(GraphDatabaseService db, DatabaseOperation operation) throws Exception;
-	
+
 }
