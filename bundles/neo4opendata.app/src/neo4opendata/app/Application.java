@@ -7,9 +7,7 @@ import org.osgi.framework.ServiceReference;
 
 import neo4opendata.db.DatabaseService;
 import neo4opendata.db.operations.DatabaseOperation;
-import neo4opendata.db.operations.Result;
 import neo4opendata.db.operations.impl.InitializeDB;
-import neo4opendata.db.operations.impl.InitializeDB.InitializationResult;
 
 public class Application implements BundleActivator {
 
